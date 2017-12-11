@@ -218,7 +218,7 @@ var dbManager = {
    /**
     * Insert an array of (github) labels into the database.
     */
-   insertLabels: function(repo, labels, number, isIssue) {
+   insertLabels: function(repo, labels, number, isIssue = null) {
       var labelsSaved = labels.map(this.insertLabel.bind(this));
       return Promise.all(labelsSaved).then(function() {
          if (!isIssue) {

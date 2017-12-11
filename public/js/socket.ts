@@ -1,5 +1,7 @@
 import io from 'socket.io-client'
 
+declare var App: any;
+
 var socket = io.connect('/');
 
 socket.on('unauthenticated', function() {

@@ -8,6 +8,8 @@ import db from '../lib/db';
  * from the Signature object.
  */
 export default class DBSignature {
+   data = null;
+
    constructor(signature) {
       var sigData = signature.data;
       this.data = {
@@ -28,4 +30,4 @@ export default class DBSignature {
 
       return db.query(q_insert, sigData);
    }
-};
+}

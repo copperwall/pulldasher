@@ -1,7 +1,8 @@
 import config from '../config';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:authentication');
-import { github } from './git-manager';
+import gitManager from './git-manager';
+const github = gitManager.github;
 import Promise from 'promise';
 import passport from 'passport';
 import _ from 'underscore';
@@ -18,7 +19,7 @@ passport.deserializeUser(function(obj ,done) {
 passport.use(new GitHubStrategy({
       clientID: config.github.clientId,
       clientSecret: config.github.secret,
-      callbackURL: config.callbackURL,
+      callbackURL: config.github.callbackURL,
       // Since we only need to get the username to verify they are a member of
       // a team we don't need anything other than public info.
       scope: null

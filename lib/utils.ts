@@ -1,5 +1,6 @@
 import config from '../config';
 import _ from 'underscore';
+import Promise from 'promise';
 
 export default {
    /**
@@ -33,9 +34,8 @@ export default {
     *
     * The function should take a repository name, and return an array of values.
     */
-   forEachRepo: function(singleRepoLambda, args) {
+   forEachRepo: function(singleRepoLambda, args = []) {
       // default value
-      args = args || [];
       args.unshift(null);
       var allRepoMap = function(currentRepo) {
          args[0] = currentRepo;

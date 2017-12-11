@@ -41,4 +41,4 @@ export default class DBComment {
          debug('deleted %s comment %s in repo %s', type, comment_id, repo);
       });
    }
-};
+}

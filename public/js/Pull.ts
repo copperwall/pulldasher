@@ -2,6 +2,8 @@ import _ from 'underscore'
 import utils from './appearanceUtils'
 import socket from 'socket'
 
+declare var App: any;
+
 var Pull = function(data) {
    this.update(data);
 };
@@ -13,15 +15,15 @@ _.extend(Pull.prototype, {
 
    update: function(data) {
       var computeSignatures = function(signatures) {
-         var groups = {};
+         var groups = {
+            // Contains all signatures that are active
+            current: [],
+            // Contains all signatures that are inactive from users without signatures in current
+            old: [],
+            // Contains the most recent signature from the current user
+            user: null
+         };
          var users = {};
-
-         // Contains all signatures that are active
-         groups.current = [];
-         // Contains all signatures that are inactive from users without signatures in current
-         groups.old = [];
-         // Contains the most recent signature from the current user
-         groups.user = null;
 
          signatures.forEach(function(signature) {
             if (signature.data.active) {

@@ -36,4 +36,4 @@ export default class Comment {
          id:         data.comment_id
       });
    }
-};
+}

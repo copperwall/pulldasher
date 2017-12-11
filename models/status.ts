@@ -26,4 +26,4 @@ export default class Status {
          state:         data.state
       });
    }
-};
+}

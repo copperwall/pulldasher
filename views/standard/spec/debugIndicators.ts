@@ -2,6 +2,8 @@ import $ from 'jquery'
 import _manager from 'pullManager'
 import socket from 'socket'
 
+declare var App: any;
+
 // This defines the debug indicators. These are a group of indicators on the
 // right-hand side of the navbar which are only visible in debugging mode. In
 // general, these should work the same way as page indicators (see

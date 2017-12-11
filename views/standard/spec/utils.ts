@@ -3,7 +3,7 @@ import _ from 'underscore'
 // These are various utility functions for the rest of the config.
 
 // Get a `GET` parameter from the URL
-var params = function() {
+var params = function(): any {
    var filters = {};
    var filterString = window.location.search;
    filterString = filterString.replace(/^\?/, '');

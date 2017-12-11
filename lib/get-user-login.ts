@@ -3,4 +3,4 @@ export default function(userApiObject) {
    // the github web app (except in the api, where they are just null).
    // https://github.com/ghost
    return userApiObject ? userApiObject.login : "ghost";
-};
+}

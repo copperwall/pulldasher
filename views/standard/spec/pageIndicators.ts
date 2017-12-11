@@ -40,7 +40,7 @@ var summarize = function(pulls, node, type, extract) {
    .flatten()
    // We now have a list of signatures. Now to convert them to usernames
    .filter(function(signature) {
-     return signature.data.active && (date - (new Date(signature.data.created_at))) < difference;
+     return signature.data.active && (date.getTime() - (new Date(signature.data.created_at).getTime())) < difference;
    })
    .map(function(signature) {
       return signature.data.user;

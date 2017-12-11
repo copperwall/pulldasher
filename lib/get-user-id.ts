@@ -4,4 +4,4 @@ export default function(userApiObject) {
    // All deleted users are replaced with references to this user within github
    // (except in the api, where they are just null
    return userApiObject ? userApiObject.id : 10137;
-};
+}

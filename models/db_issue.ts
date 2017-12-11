@@ -46,4 +46,4 @@ export default class DBIssue {
 
       return db.query(q_update, issueData);
    }
-};
+}

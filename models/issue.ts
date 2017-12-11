@@ -11,6 +11,8 @@ import getLogin from '../lib/get-user-login';
  * Issue.getFromGH or Issue.getFromDB
  */
 export default class Issue {
+   number: null;
+
    constructor(data, labels) {
       _.extend(this, data);
       if (labels) {
@@ -59,7 +61,7 @@ export default class Issue {
     * A factory method to create an issue from GitHub data. Currently, the data
     * in Issue is almost identical to the data coming from GitHub.
     */
-   static getFromGH(data, labels) {
+   static getFromGH(data, labels = null) {
       var issueData = {
          repo: data.repo,
          number: data.number,
@@ -99,4 +101,4 @@ export default class Issue {
       };
       return new Issue(issueData, labels);
    }
-};
+}

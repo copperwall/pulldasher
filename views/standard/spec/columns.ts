@@ -2,6 +2,8 @@ import $ from 'jquery'
 import utils from 'appearanceUtils'
 import _ from 'underscore'
 
+declare var App: any;
+
 /* `spec/columns.js`
  *
  * This file defines the columns which Pulldasher shows. It is required and
@@ -291,8 +293,9 @@ export default [
       indicators: {
          qa_in_progress: function qa_in_progress(pull, node) {
             var label;
+            let icon;
             if ((label = pull.getLabel('QAing'))) {
-               const icon = $('<i>').addClass('fa fa-eye qaing');
+               icon = $('<i>').addClass('fa fa-eye qaing');
                if (label.user === App.user) {
                   icon.addClass('mine');
                }
@@ -301,7 +304,7 @@ export default [
                node.append(icon);
             }
             if ((label = pull.getLabel('external_block'))) {
-               const icon = $('<i>').addClass('fa fa-eye-slash externally-blocked');
+               icon = $('<i>').addClass('fa fa-eye-slash externally-blocked');
 
                utils.addActionTooltip(icon, 'Externally Blocked',
                 label.created_at, label.user);

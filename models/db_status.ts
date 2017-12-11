@@ -27,4 +27,4 @@ export default class DBStatus {
    toObject() {
       return _.extend({}, this.data);
    }
-};
+}

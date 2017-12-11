@@ -1,11 +1,11 @@
 import $ from 'jquery'
 import _ from 'underscore'
 
-import pullTemplate from 'html/pull.html'
-import restoreTemplate from 'html/restore.html'
-import columnTemplate from 'html/column.html'
-import indicatorTemplate from 'html/indicator.html'
-import globalIndicatorTemplate from 'html/global_indicator.html'
+const pullTemplate = require('html/pull.html');
+const restoreTemplate = require('html/restore.html');
+const columnTemplate = require('html/column.html');
+const indicatorTemplate = require('html/indicator.html');
+const globalIndicatorTemplate = require('html/global_indicator.html');
 
 var templates = {
    pull: pullTemplate,

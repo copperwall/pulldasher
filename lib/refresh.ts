@@ -27,7 +27,7 @@ export default {
 
    openIssues: function refreshOpenIssues() {
       debug("refresh all open issues");
-      return utils.forEachRepo(gitManager.getOpenIssues, gitManager.params())
+      return utils.forEachRepo(gitManager.getOpenIssues)
       .then(pushAllOnQueue(issueQueue));
    },
 

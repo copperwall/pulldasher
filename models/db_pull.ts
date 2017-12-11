@@ -4,7 +4,7 @@ import db from '../lib/db';
 
 // Builds an object representation of a row in the DB `pulls` table
 // from the data returned by GitHub's API.
-module.expots = class DBPull {
+export default class DBPull {
    data = null;
 
    constructor(pull) {

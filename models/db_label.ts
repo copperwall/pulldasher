@@ -32,4 +32,4 @@ export default class DBLabel {
       return db.query(q_update, [labelData.number, labelData.title,
        labelData.repo]);
    }
-};
+}

@@ -3,6 +3,8 @@ import _ from 'underscore'
 import utils from 'appearanceUtils'
 import debug from 'debug'
 
+declare var App: any;
+
 var log = debug('indicators');
 var signatureStatus = function(pull, node, type, required, signatures) {
       var signatureMark = function() {

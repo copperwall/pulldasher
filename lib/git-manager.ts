@@ -12,7 +12,7 @@ import Label from '../models/label';
 import Status from '../models/status';
 import Signature from '../models/signature';
 import getLogin from './get-user-login';
-import rateLimit from './rate-limit.js';
+import rateLimit from './rate-limit';
 var github = new GithubApi({
   debug: config.debug,
   version: '3.0.0'
@@ -27,18 +27,17 @@ function denodeify(func) {
    return rateLimit(Promise.denodeify(func));
 }
 
-var api = {};
 var getPull                = denodeify(github.pullRequests.get);
 var getAllPulls            = denodeify(github.pullRequests.getAll);
 var getIssue               = denodeify(github.issues.getRepoIssue);
 var getAllIssues           = denodeify(github.issues.repoIssues);
-api.getIssueEvents         = denodeify(github.issues.getEvents);
-// "issue" comments are the comments on the pull (issue) itself.
-api.getIssueComments       = denodeify(github.issues.getComments);
-// "review" comments are the comments on the diff of the pull
-api.getPullReviewComments  = denodeify(github.pullRequests.getComments);
-api.getCommit              = denodeify(github.repos.getCommits);
-api.getCommitStatus        = denodeify(github.statuses.get);
+var api = {
+   getIssueEvents: denodeify(github.issues.getEvents),
+   getIssueComments: denodeify(github.issues.getComments),
+   getPullReviewComments: denodeify(github.pullRequests.getComments),
+   getCommit: denodeify(github.repos.getCommits),
+   getCommitStatus: denodeify(github.statuses.get)
+}
 var getNextPage            = denodeify(github.getNextPage.bind(github));
 
 export default {

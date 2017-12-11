@@ -9,7 +9,7 @@ import _ from 'underscore'
  * @param prefilter - An (optional) argument. If an IndicatorFilter is
  * passed, it will be called before this one.
  */
-function IndicatorFilter(indicators, prefilter) {
+function IndicatorFilter(indicators, prefilter = null) {
    /**
     * Creates indicators on the given element based on the given pull
     *

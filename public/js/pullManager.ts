@@ -2,6 +2,8 @@ import _ from 'underscore'
 import socket from './socket'
 import Pull from 'Pull'
 
+declare var App: any;
+
 var listeners = [];
 
 var pullIndex = {};

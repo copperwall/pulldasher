@@ -1,12 +1,12 @@
-import events from 'events';
+import { EventEmitter } from 'events';
 import _ from 'underscore';
 
 function PullQueue() {
-   events.EventEmitter.call(this);
+   EventEmitter.call(this);
    this.dirtyPulls = {};
 }
 
-require('util').inherits(PullQueue, events.EventEmitter);
+require('util').inherits(PullQueue, EventEmitter);
 
 _.extend(PullQueue.prototype, {
    /**

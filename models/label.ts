@@ -6,7 +6,7 @@ import utils from '../lib/utils';
 export default class Label {
    data = null;
 
-   constructor(data, pullNumber, repoFullName, user, created_at) {
+   constructor(data, pullNumber, repoFullName = null, user = null, created_at = null) {
       this.data = {
          title: data.name,
          number: pullNumber,
@@ -29,4 +29,4 @@ export default class Label {
          utils.fromUnixTime(data.date)
       );
    }
-};
+}

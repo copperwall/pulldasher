@@ -167,7 +167,7 @@ export default class Pull {
       return bodyTags;
    }
 
-   static fromGithubApi(data, signatures, comments, commitStatus, labels) {
+   static fromGithubApi(data, signatures = null, comments = null, commitStatus = null, labels = null) {
       data = {
          repo: data.base.repo.full_name,
          number: data.number,
@@ -245,4 +245,4 @@ export default class Pull {
 
       return new Pull(pullData, signatures, comments, commitStatus, labels);
    }
-};
+}

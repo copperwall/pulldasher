@@ -23,7 +23,7 @@
  * @param prefilter - An (optional) parent ElementFilter which will be run on
  * elements before this one is.
  */
-function ElementFilter(spec, prefilter) {
+function ElementFilter(spec, prefilter = null) {
    return {
       filter: function(pull, element) {
          // Later possibilities: a message object that can carry data from

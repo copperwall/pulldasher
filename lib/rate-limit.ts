@@ -13,13 +13,12 @@ var chokePoint = 2000;
 // github's rate-limit headers and delays firing of requests to attempt to
 // stay under the rate limit.
 export default function rateLimit(promiseFunc) {
-   return function () {
-      var args = arguments;
+   return function (...args) {
       return throttleRequest().then(function() {
          return promiseFunc.apply(null, args);
       }).then(captureRateLimitInfo);
    };
-};
+}
 
 // FIFO queue of request callbacks to github
 var requestQueue = [];

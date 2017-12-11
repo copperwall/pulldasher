@@ -1,5 +1,7 @@
 import $ from 'jquery'
 
+declare var App: any;
+
 export default {
    /** Hides/shows `blob` depending on whether `container` has any elements
     * matching `selector` in it. If it doesn't, then `blob` will be hidden,
@@ -59,7 +61,7 @@ export default {
       return this.addTooltip(node, info);
    },
 
-   addTooltip: function(node, text, placement) {
+   addTooltip: function(node, text, placement = null) {
       node.attr('data-toggle', "tooltip");
       node.attr('data-placement', placement);
       node.attr('title', text);

@@ -7,6 +7,8 @@ import utils from '../lib/utils';
  * A block or signoff in a comment.
  */
 export default class Signature {
+   data = null;
+
    constructor(data) {
       this.data = {
          repo:             data.repo,
@@ -78,7 +80,7 @@ export default class Signature {
    static compare(a, b) {
       return Date.parse(a.data.created_at) - Date.parse(b.data.created_at);
    }
-};
+}
 
 function hasTag(body, tag) {
    return tag.regex.test(body);
