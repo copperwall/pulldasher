@@ -21,9 +21,12 @@
     "promise": "5.0.x",
     "socket.io": "1.7.3",
     "socket.io-client": "^2.0.3",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "@types/node": "^8.0.57",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
@@ -38,11 +41,12 @@
     "webpack": "^3.6.0"
   },
   "scripts": {
-    "start": "node app.js",
-    "debug": "node debug app.js",
-    "postinstall": "grunt && webpack"
+    "build": "tsc",
+    "start": "node dist-server/app.js",
+    "debug": "node debug dist-server/app.js",
+    "postinstall": "grunt && npm run build && webpack"
   },
-  "main": "app.js",
+  "main": "dist-server/app.js",
   "repository": "git@github.com:ifixit/pulldasher.git",
   "author": "iFixit",
   "license": "MIT"

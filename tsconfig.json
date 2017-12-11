@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist-server"
+  },
+  "include": [
+    "models/**/*.ts",
+    "lib/**/*.ts",
+    "controllers/**/*.ts"
+  ]
+}
