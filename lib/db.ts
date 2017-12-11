@@ -1,6 +1,6 @@
-var mysql = require('mysql'),
-    config = require('../config'),
-    Promise = require('promise');
+import mysql from 'mysql';
+import config from '../config';
+import Promise from 'promise';
 
 var pool = mysql.createPool({
    host: config.mysql.host,
@@ -14,4 +14,4 @@ var pool = mysql.createPool({
 
 pool.query = Promise.denodeify(pool.query);
 
-module.exports = pool;
+export default pool;

@@ -1,8 +1,8 @@
-var socketAuthenticator = require('../lib/socket-auth');
+import socketAuthenticator from '../lib/socket-auth';
 var socketio = require('../package').dependencies['socket.io'];
-var config = require('../config');
+import config from '../config';
 
-module.exports = {
+export default {
    index: function(req, res) {
       res.render('current/index', {
          socketToken: socketAuthenticator.getTokenForUser(req.user),

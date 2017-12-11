@@ -1,6 +1,6 @@
-var utils = require('../lib/utils'),
-    getLogin = require('../lib/get-user-login'),
-    db = require('../lib/db');
+import utils from '../lib/utils';
+import getLogin from '../lib/get-user-login';
+import db from '../lib/db';
 
 // Builds an object representation of a row in the DB `pulls` table
 // from the data returned by GitHub's API.

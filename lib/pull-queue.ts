@@ -1,5 +1,5 @@
-var events      = require('events'),
-    _           = require('underscore');
+import events from 'events';
+import _ from 'underscore';
 
 function PullQueue() {
    events.EventEmitter.call(this);
@@ -39,5 +39,5 @@ _.extend(PullQueue.prototype, {
    }
 });
 
-module.exports = new PullQueue();
+export default new PullQueue();
 

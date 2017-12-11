@@ -1,11 +1,11 @@
-var config = require('../config');
+import config from '../config';
 var users = {};
 
 var token_timeout = config.token_timeout !== undefined ?
    config.token_timeout : 100 * 1000;
 
 
-module.exports = {
+export default {
    getTokenForUser: function(user) {
       var token = random();
       users[token] = {

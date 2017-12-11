@@ -1,4 +1,4 @@
-module.exports = function(userApiObject) {
+export default function(userApiObject) {
    // 10137 is the userid of the "ghost" user
    // https://api.github.com/users/ghost
    // All deleted users are replaced with references to this user within github

@@ -1,7 +1,7 @@
 /**
  * An object representing the build status of the head commit of a pull.
  */
-modules.exports = class Status {
+export default class Status {
    data = null;
    constructor(data) {
       this.data = {
@@ -26,4 +26,4 @@ modules.exports = class Status {
          state:         data.state
       });
    }
-}
+};

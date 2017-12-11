@@ -1,9 +1,9 @@
-var utils = require('../lib/utils'),
-    db = require('../lib/db');
+import utils from '../lib/utils';
+import db from '../lib/db';
 
 // Builds an object representation of a row in the DB `pull_labels` table
 // from an instance of the Label model
-module.exports = class DBLabel {
+export default class DBLabel {
    data = null;
 
    constructor(label) {
@@ -32,4 +32,4 @@ module.exports = class DBLabel {
       return db.query(q_update, [labelData.number, labelData.title,
        labelData.repo]);
    }
-}
+};

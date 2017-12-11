@@ -1,13 +1,13 @@
-var utils = require('../lib/utils'),
-    getLogin = require('../lib/get-user-login'),
-    getUserid = require('../lib/get-user-id'),
-    db = require('../lib/db');
+import utils from '../lib/utils';
+import getLogin from '../lib/get-user-login';
+import getUserid from '../lib/get-user-id';
+import db from '../lib/db';
 
 /**
  * Builds an object representation of a row in the DB `pull_signatures` table
  * from the Signature object.
  */
-module.exports = class DBSignature {
+export default class DBSignature {
    constructor(signature) {
       var sigData = signature.data;
       this.data = {
@@ -28,4 +28,4 @@ module.exports = class DBSignature {
 
       return db.query(q_insert, sigData);
    }
-}
+};

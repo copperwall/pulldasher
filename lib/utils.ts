@@ -1,7 +1,7 @@
-var config = require('../config'),
-    _      = require('underscore');
+import config from '../config';
+import _ from 'underscore';
 
-module.exports = {
+export default {
    /**
     * Converts `t` to a Unix timestamp from a Date object unless it's already
     * a number.

@@ -1,10 +1,10 @@
-var utils = require('../lib/utils');
-var getLogin = require('../lib/get-user-login');
+import utils from '../lib/utils';
+import getLogin from '../lib/get-user-login';
 
 /**
  * A Pull Request comment.
  */
-modules.exports = class Comment {
+export default class Comment {
    data = null;
    
    constructor(data) {
@@ -24,7 +24,7 @@ modules.exports = class Comment {
     * Takes an object representing a DB row, and returns an instance of this
     * Comment object.
     */
-   getFromDB(data) {
+   static getFromDB(data) {
       return new Comment({
          number:     data.number,
          repo:       data.repo,
@@ -36,4 +36,4 @@ modules.exports = class Comment {
          id:         data.comment_id
       });
    }
-}
+};

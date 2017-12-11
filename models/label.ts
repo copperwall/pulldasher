@@ -1,9 +1,9 @@
-var utils  = require('../lib/utils');
+import utils from '../lib/utils';
 
 /**
  * Build a Label object.
  */
-module.exports = class Label {
+export default class Label {
    data = null;
 
    constructor(data, pullNumber, repoFullName, user, created_at) {
@@ -29,4 +29,4 @@ module.exports = class Label {
          utils.fromUnixTime(data.date)
       );
    }
-}
+};

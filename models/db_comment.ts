@@ -1,13 +1,14 @@
-var utils = require('../lib/utils'),
-    db = require('../lib/db'),
-    getLogin = require('../lib/get-user-login'),
-    debug = require('../lib/debug')('pulldasher:db_comment');
+import utils from '../lib/utils';
+import db from '../lib/db';
+import getLogin from '../lib/get-user-login';
+import debugFactory from '../lib/debug';
+const debug = debugFactory('pulldasher:db_comment');
 
 /**
  * Builds an object representation of a row in the DB `comments` table
  * from the Comment object.
  */
-module.exports = class DBComment {
+export default class DBComment {
    data = null;
 
    constructor(comment) {
@@ -40,4 +41,4 @@ module.exports = class DBComment {
          debug('deleted %s comment %s in repo %s', type, comment_id, repo);
       });
    }
-}
+};

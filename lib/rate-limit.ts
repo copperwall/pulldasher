@@ -1,5 +1,6 @@
-var Promise = require('promise'),
-    debug = require('./debug')('pulldasher:rate-limit');
+import Promise from 'promise';
+import debugFactory from './debug';
+const debug = debugFactory('pulldasher:rate-limit');
 
 // Number of remaining requests that will activate the rate-limiter.
 // 5000 == always rate limit
@@ -11,7 +12,7 @@ var chokePoint = 2000;
 // Wraps a promise returing function in a function that checks responses for
 // github's rate-limit headers and delays firing of requests to attempt to
 // stay under the rate limit.
-module.exports = function rateLimit(promiseFunc) {
+export default function rateLimit(promiseFunc) {
    return function () {
       var args = arguments;
       return throttleRequest().then(function() {

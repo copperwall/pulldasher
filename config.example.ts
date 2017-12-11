@@ -5,7 +5,7 @@ var emoji = "[\u2190-\u2BFF]|\ud83c[\udf00-\udfff]|\ud83d([\udc00-\ude4f]|[\ude8
 var emojiText = ":[^\n:]+:";
 var signature = "(" + emojiText + '|' + emoji + ")";
 
-module.exports = {
+export default {
    // This is the port Pulldasher will run on. If you want to have multiple
    // instances of Pulldasher running on the same server, just assign them
    // different ports.

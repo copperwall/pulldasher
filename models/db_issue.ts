@@ -1,10 +1,10 @@
-var utils = require('../lib/utils');
-var db = require('../lib/db');
+import utils from '../lib/utils';
+import db from '../lib/db';
 
 /**
  * Create a new instance from an Issue object
  */
-module.exports = class DBIssue {
+export default class DBIssue {
    data = null;
 
    constructor(issue) {
@@ -46,4 +46,4 @@ module.exports = class DBIssue {
 
       return db.query(q_update, issueData);
    }
-}
+};

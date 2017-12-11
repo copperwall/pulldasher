@@ -1,21 +1,22 @@
-var GithubApi = require('github'),
-    config = require('../config'),
-    Promise = require('promise'),
-    _ = require('underscore'),
-    github = new GithubApi({
-      debug: config.debug,
-      version: '3.0.0'
-    }),
-    debug = require('./debug')('pulldasher:github'),
-    utils = require('./utils'),
-    Pull = require('../models/pull'),
-    Issue = require('../models/issue'),
-    Comment = require('../models/comment'),
-    Label = require('../models/label'),
-    Status = require('../models/status'),
-    Signature = require('../models/signature'),
-    getLogin  = require('./get-user-login'),
-    rateLimit = require('./rate-limit.js');
+import GithubApi from 'github';
+import config from '../config';
+import Promise from 'promise';
+import _ from 'underscore';
+import debugFactory from './debug';
+const debug = debugFactory('pulldasher:github');
+import utils from './utils';
+import Pull from '../models/pull';
+import Issue from '../models/issue';
+import Comment from '../models/comment';
+import Label from '../models/label';
+import Status from '../models/status';
+import Signature from '../models/signature';
+import getLogin from './get-user-login';
+import rateLimit from './rate-limit.js';
+var github = new GithubApi({
+  debug: config.debug,
+  version: '3.0.0'
+});
 
 github.authenticate({
    type: 'oauth',
@@ -40,7 +41,7 @@ api.getCommit              = denodeify(github.repos.getCommits);
 api.getCommitStatus        = denodeify(github.statuses.get);
 var getNextPage            = denodeify(github.getNextPage.bind(github));
 
-module.exports = {
+export default {
    github: github,
 
    /**
@@ -135,7 +136,7 @@ module.exports = {
       var commitStatus = getCommitStatus(repo, githubPull.head.sha);
       var events = getIssueEvents(repo, githubPull.number);
       // Only so we have the canonical list of labels.
-      var ghIssue = module.exports.getIssue(repo, githubPull.number);
+      var ghIssue = getIssue(repo, githubPull.number);
 
       // Returned to the map function. Each element of githubPulls maps to
       // a promise that resolves to a Pull.

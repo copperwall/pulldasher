@@ -1,15 +1,16 @@
-var utils   = require('../lib/utils');
-var _       = require('underscore');
-var config  = require('../config');
-var log     = require('../lib/debug')('pulldasher:issue');
-var DBIssue = require('./db_issue');
-var getLogin = require('../lib/get-user-login');
+import utils from '../lib/utils';
+import _ from 'underscore';
+import config from '../config';
+import logFactory from '../lib/debug';
+const log = logFactory('pulldasher:issue');
+import DBIssue from './db_issue';
+import getLogin from '../lib/get-user-login';
 
 /**
  * Create a new issue. Not meant to be used directly, see
  * Issue.getFromGH or Issue.getFromDB
  */
-module.exports = class Issue {
+export default class Issue {
    constructor(data, labels) {
       _.extend(this, data);
       if (labels) {
@@ -98,4 +99,4 @@ module.exports = class Issue {
       };
       return new Issue(issueData, labels);
    }
-}
+};

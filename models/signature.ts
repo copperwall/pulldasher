@@ -1,12 +1,12 @@
-var config = require('../config'),
-    getLogin = require('../lib/get-user-login'),
-    getUserid = require('../lib/get-user-id'),
-    utils = require('../lib/utils');
+import config from '../config';
+import getLogin from '../lib/get-user-login';
+import getUserid from '../lib/get-user-id';
+import utils from '../lib/utils';
 
 /**
  * A block or signoff in a comment.
  */
-module.exports = class Signature {
+export default class Signature {
    constructor(data) {
       this.data = {
          repo:             data.repo,
@@ -78,7 +78,7 @@ module.exports = class Signature {
    static compare(a, b) {
       return Date.parse(a.data.created_at) - Date.parse(b.data.created_at);
    }
-}
+};
 
 function hasTag(body, tag) {
    return tag.regex.test(body);

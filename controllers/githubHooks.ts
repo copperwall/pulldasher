@@ -1,15 +1,16 @@
-var config     = require('../config'),
-    Promise    = require('promise'),
-    debug      = require('../lib/debug')('pulldasher:githubHooks'),
-    Pull       = require('../models/pull'),
-    Status     = require('../models/status'),
-    Signature  = require('../models/signature'),
-    Issue      = require('../models/issue'),
-    Comment    = require('../models/comment'),
-    Label      = require('../models/label'),
-    refresh    = require('../lib/refresh'),
-    getLogin   = require('../lib/get-user-login'),
-    dbManager  = require('../lib/db-manager');
+import config from '../config';
+import Promise from 'promise';
+import debugFactory from '../lib/debug';
+const debug = debugFactory('pulldasher:githubHooks');
+import Pull from '../models/pull';
+import Status from '../models/status';
+import Signature from '../models/signature';
+import Issue from '../models/issue';
+import Comment from '../models/comment';
+import Label from '../models/label';
+import refresh from '../lib/refresh';
+import getLogin from '../lib/get-user-login';
+import dbManager from '../lib/db-manager';
 
 var HooksController = {
 
@@ -218,4 +219,4 @@ function refreshPullOrIssue(responseBody) {
    }
 }
 
-module.exports = HooksController;
+export default HooksController;

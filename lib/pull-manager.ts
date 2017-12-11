@@ -1,12 +1,13 @@
-var debug      = require('./debug')('pulldasher:pull-manager'),
-    pullQueue  = require('./pull-queue'),
-    _          = require('underscore'),
-    dbManager  = require('./db-manager');
+import debugFactory from './debug';
+const debug = debugFactory('pulldasher:pull-manager');
+import pullQueue from './pull-queue';
+import _ from 'underscore';
+import dbManager from './db-manager';
 
 var sockets = [];
 var pulls = [];
 
-var pullManager = module.exports = {
+var pullManager = {
    addSocket: function(socket) {
       sockets.push(socket);
       sendInitialData(socket);
@@ -33,6 +34,8 @@ var pullManager = module.exports = {
       notifyAboutPullStateChange(pull);
    }
 };
+
+export default pullManager;
 
 function sendInitialData(socket) {
    debug('Emitting `allPulls`: %s pulls altogether', pulls.length);

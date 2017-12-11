@@ -1,10 +1,11 @@
-var config = require('../config'),
-    debug = require('./debug')('pulldasher:authentication'),
-    github = require('./git-manager').github,
-    Promise = require('promise'),
-    passport = require('passport'),
-    _ = require('underscore'),
-    GitHubStrategy = require('passport-github').Strategy;
+import config from '../config';
+import debugFactory from './debug';
+const debug = debugFactory('pulldasher:authentication');
+import { github } from './git-manager';
+import Promise from 'promise';
+import passport from 'passport';
+import _ from 'underscore';
+import { Strategy as GitHubStrategy } from 'passport-github';
 
 passport.serializeUser(function(user,done) {
    done(null, user);
@@ -28,7 +29,7 @@ passport.use(new GitHubStrategy({
    })
 );
 
-module.exports = {
+export default {
    passport: passport,
    setupRoutes: function(app) {
       app.get('/auth/github', passport.authenticate('github'));

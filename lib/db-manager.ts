@@ -1,21 +1,22 @@
-var _ = require('underscore'),
-    debug = require('./debug')('pulldasher:db-manager'),
-    Promise = require('promise'),
-    db = require('../lib/db'),
-    DBIssue = require('../models/db_issue'),
-    DBStatus = require('../models/db_status'),
-    DBSignature = require('../models/db_signature'),
-    DBComment = require('../models/db_comment'),
-    DBLabel = require('../models/db_label'),
-    Pull = require('../models/pull'),
-    Issue = require('../models/issue'),
-    Status = require('../models/status'),
-    Signature = require('../models/signature'),
-    Comment = require('../models/comment'),
-    Label = require('../models/label'),
-    queue = require('../lib/pull-queue');
+import _ from 'underscore';
+import debugFactory from './debug';
+const debug = debugFactory('pulldasher:db-manager');
+import Promise from 'promise';
+import db from '../lib/db';
+import DBIssue from '../models/db_issue';
+import DBStatus from '../models/db_status';
+import DBSignature from '../models/db_signature';
+import DBComment from '../models/db_comment';
+import DBLabel from '../models/db_label';
+import Pull from '../models/pull';
+import Issue from '../models/issue';
+import Status from '../models/status';
+import Signature from '../models/signature';
+import Comment from '../models/comment';
+import Label from '../models/label';
+import queue from '../lib/pull-queue';
 
-var dbManager = module.exports = {
+var dbManager = {
 
    /**
     * Takes a Pull object and returns a promise that resolves when the db and
@@ -452,6 +453,8 @@ var dbManager = module.exports = {
    // @TODO closeStalePulls:
 
 };
+
+export default dbManager;
 
 /**
  * Return a copy of the specified array with nulls removed

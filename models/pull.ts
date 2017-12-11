@@ -1,13 +1,14 @@
-var utils   = require('../lib/utils');
-var _       = require('underscore');
-var config  = require('../config');
-var queue = require('../lib/pull-queue');
-var Promise = require('promise');
-var debug = require('../lib/debug')('pulldasher:pull');
-var DBPull = require('./db_pull');
-var getLogin = require('../lib/get-user-login');
+import utils from '../lib/utils';
+import _ from 'underscore';
+import config from '../config';
+import queue from '../lib/pull-queue';
+import Promise from 'promise';
+import debugFactory from '../lib/debug';
+const debug = debugFactory('pulldasher:pull');
+import DBPull from './db_pull';
+import getLogin from '../lib/get-user-login';
 
-module.exports = class Pull {
+export default class Pull {
    data = null;
    signatures = null;
    comments = null;
@@ -244,4 +245,4 @@ module.exports = class Pull {
 
       return new Pull(pullData, signatures, comments, commitStatus, labels);
    }
-}
+};

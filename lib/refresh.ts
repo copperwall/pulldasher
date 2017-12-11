@@ -1,16 +1,16 @@
-var gitManager = require('./git-manager');
-var dbManager = require('./db-manager');
-var utils = require('./utils');
-
-var NotifyQueue = require('notify-queue');
-var debug = require('./debug')('pulldasher:refresh');
-var Promise = require('promise');
+import gitManager from './git-manager';
+import dbManager from './db-manager';
+import utils from './utils';
+import NotifyQueue from 'notify-queue';
+import debugFactory from './debug';
+const debug = debugFactory('pulldasher:refresh');
+import Promise from 'promise';
 
 // Queues for making all refreshes be synchronous, one at a time.
 var issueQueue = new NotifyQueue();
 var pullQueue  = new NotifyQueue();
 
-module.exports = {
+export default {
    ///////   Issues   /////////
 
    issue: function refreshIssue(repo, number) {

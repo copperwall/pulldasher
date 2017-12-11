@@ -1,9 +1,9 @@
-var _ = require('underscore'),
-    db = require('../lib/db');
+import _ from 'underscore';
+import db from '../lib/db';
 
 // Builds an object representation of a row in the DB `commit_statuses`
 // table from the data returned by GitHub's API.
-module.exports = class DBStatus {
+export default class DBStatus {
    data = null;
 
    constructor(status) {
@@ -27,4 +27,4 @@ module.exports = class DBStatus {
    toObject() {
       return _.extend({}, this.data);
    }
-}
+};

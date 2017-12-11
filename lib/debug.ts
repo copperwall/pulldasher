@@ -1,5 +1,5 @@
-var debug = require('debug');
-module.exports = debug;
+import debug from 'debug';
+export default debug;
 
 if (process.env.NO_TIMESTAMP) {
    debug.formatArgs = function(args) {
