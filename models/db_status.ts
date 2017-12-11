@@ -3,26 +3,28 @@ var _ = require('underscore'),
 
 // Builds an object representation of a row in the DB `commit_statuses`
 // table from the data returned by GitHub's API.
-function DBStatus(status) {
-   var statusData = status.data;
-   this.data = {
-      repo: statusData.repo,
-      commit: statusData.sha,
-      state: statusData.state,
-      description: statusData.description,
-      log_url: statusData.target_url
-   };
+module.exports = class DBStatus {
+   data = null;
+
+   constructor(status) {
+      var statusData = status.data;
+      this.data = {
+         repo: statusData.repo,
+         commit: statusData.sha,
+         state: statusData.state,
+         description: statusData.description,
+         log_url: statusData.target_url
+      };
+   }
+
+   save() {
+      var statusData = this.data;
+      var q_update = 'REPLACE INTO commit_statuses SET ?';
+
+      return db.query(q_update, statusData);
+   }
+
+   toObject() {
+      return _.extend({}, this.data);
+   }
 }
-
-DBStatus.prototype.save = function() {
-   var statusData = this.data;
-   var q_update = 'REPLACE INTO commit_statuses SET ?';
-
-   return db.query(q_update, statusData);
-};
-
-DBStatus.prototype.toObject = function() {
-   return _.extend({}, this.data);
-};
-
-module.exports = DBStatus;
