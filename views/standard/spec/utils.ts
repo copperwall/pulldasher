@@ -1,4 +1,4 @@
-import _ from 'underscore'
+import * as _ from 'underscore'
 
 // These are various utility functions for the rest of the config.
 

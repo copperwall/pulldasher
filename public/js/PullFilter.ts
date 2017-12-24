@@ -1,4 +1,4 @@
-import _ from 'underscore'
+import * as _ from 'underscore'
 
 /**
  * PullFilter runs pulls through the various functions (optionally) provided by

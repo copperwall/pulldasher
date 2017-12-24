@@ -1,5 +1,5 @@
-import $ from 'jquery'
-import _ from 'underscore'
+import * as $ from 'jquery'
+import * as _ from 'underscore'
 
 // IndicatorFilter handles rendering the indicators onto each pull
 

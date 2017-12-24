@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import * as $ from 'jquery'
 import _manager from 'pullManager'
 import socket from 'socket'
 

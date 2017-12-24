@@ -1,4 +1,4 @@
-import Promise from 'promise';
+import * as Promise from 'promise';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:rate-limit');
 

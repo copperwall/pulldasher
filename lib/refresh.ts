@@ -1,10 +1,10 @@
 import gitManager from './git-manager';
 import dbManager from './db-manager';
 import utils from './utils';
-import NotifyQueue from 'notify-queue';
+import * as NotifyQueue from 'notify-queue';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:refresh');
-import Promise from 'promise';
+import * as Promise from 'promise';
 
 // Queues for making all refreshes be synchronous, one at a time.
 var issueQueue = new NotifyQueue();

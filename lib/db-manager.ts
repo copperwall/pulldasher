@@ -1,7 +1,7 @@
-import _ from 'underscore';
+import * as _ from 'underscore';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:db-manager');
-import Promise from 'promise';
+import * as Promise from 'promise';
 import db from '../lib/db';
 import DBIssue from '../models/db_issue';
 import DBStatus from '../models/db_status';

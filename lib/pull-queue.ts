@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import _ from 'underscore';
+import * as _ from 'underscore';
 
 function PullQueue() {
    EventEmitter.call(this);

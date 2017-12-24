@@ -1,5 +1,5 @@
-import $ from 'jquery'
-import _ from 'underscore'
+import * as $ from 'jquery'
+import * as _ from 'underscore'
 
 const pullTemplate = require('html/pull.html');
 const restoreTemplate = require('html/restore.html');

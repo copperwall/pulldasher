@@ -1,5 +1,5 @@
 import socketAuthenticator from '../lib/socket-auth';
-var socketio = require('../package').dependencies['socket.io'];
+var socketio = require('../../package.json').dependencies['socket.io'];
 import config from '../config';
 
 export default {

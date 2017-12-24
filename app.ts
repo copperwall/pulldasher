@@ -1,8 +1,8 @@
 import config from './config';
-import express from 'express';
-import partials from 'express-partials';
-import bodyParser from 'body-parser';
-import expressSession from 'express-session';
+import * as express from 'express';
+import * as partials from 'express-partials';
+import * as bodyParser from 'body-parser';
+import * as expressSession from 'express-session';
 import authManager from './lib/authentication';
 import socketAuthenticator from './lib/socket-auth';
 import refresh from './lib/refresh';
@@ -26,12 +26,12 @@ app.set('view engine', 'html');
 /**
  * Middleware
  */
-app.use("/public", express.static(__dirname + '/public'));
-app.use("/js", express.static(__dirname + '/dist'));
-app.use("/spec", express.static(__dirname + '/views/current/spec'));
-app.use("/css", express.static(__dirname + '/views/current/css'));
-app.use("/html", express.static(__dirname + '/views/current/html'));
-app.use("/fonts", express.static(__dirname + '/node_modules/font-awesome/fonts'));
+app.use("/public", express.static(__dirname + '/../public'));
+app.use("/js", express.static(__dirname + '/../dist'));
+app.use("/spec", express.static(__dirname + '/../views/current/spec'));
+app.use("/css", express.static(__dirname + '/../views/current/css'));
+app.use("/html", express.static(__dirname + '/../views/current/html'));
+app.use("/fonts", express.static(__dirname + '/../node_modules/font-awesome/fonts'));
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import * as $ from 'jquery'
 
 declare var App: any;
 

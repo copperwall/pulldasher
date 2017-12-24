@@ -1,5 +1,5 @@
 import utils from '../lib/utils';
-import _ from 'underscore';
+import * as _ from 'underscore';
 import config from '../config';
 import logFactory from '../lib/debug';
 const log = logFactory('pulldasher:issue');

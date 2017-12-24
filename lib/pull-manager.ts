@@ -1,7 +1,7 @@
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:pull-manager');
 import pullQueue from './pull-queue';
-import _ from 'underscore';
+import * as _ from 'underscore';
 import dbManager from './db-manager';
 
 var sockets = [];

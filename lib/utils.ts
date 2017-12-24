@@ -1,6 +1,6 @@
 import config from '../config';
-import _ from 'underscore';
-import Promise from 'promise';
+import * as _ from 'underscore';
+import * as Promise from 'promise';
 
 export default {
    /**

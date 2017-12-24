@@ -1,6 +1,6 @@
-import $ from 'jquery'
+import * as $ from 'jquery'
 import utils from 'appearanceUtils'
-import _ from 'underscore'
+import * as _ from 'underscore'
 
 declare var App: any;
 

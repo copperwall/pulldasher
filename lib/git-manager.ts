@@ -1,7 +1,7 @@
-import GithubApi from 'github';
+import * as GithubApi from 'github';
 import config from '../config';
-import Promise from 'promise';
-import _ from 'underscore';
+import * as Promise from 'promise';
+import * as _ from 'underscore';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:github');
 import utils from './utils';

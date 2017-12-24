@@ -1,5 +1,5 @@
 import config from '../config';
-import Promise from 'promise';
+import * as Promise from 'promise';
 import debugFactory from '../lib/debug';
 const debug = debugFactory('pulldasher:githubHooks');
 import Pull from '../models/pull';

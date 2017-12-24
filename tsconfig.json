@@ -6,6 +6,7 @@
   "include": [
     "models/**/*.ts",
     "lib/**/*.ts",
-    "controllers/**/*.ts"
+    "controllers/**/*.ts",
+    "app.ts"
   ]
 }

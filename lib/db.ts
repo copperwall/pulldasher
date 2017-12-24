@@ -1,6 +1,6 @@
-import mysql from 'mysql';
+import * as mysql from 'mysql';
 import config from '../config';
-import Promise from 'promise';
+import * as Promise from 'promise';
 
 var pool = mysql.createPool({
    host: config.mysql.host,

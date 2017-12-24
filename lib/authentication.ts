@@ -3,9 +3,9 @@ import debugFactory from './debug';
 const debug = debugFactory('pulldasher:authentication');
 import gitManager from './git-manager';
 const github = gitManager.github;
-import Promise from 'promise';
-import passport from 'passport';
-import _ from 'underscore';
+import * as Promise from 'promise';
+import * as passport from 'passport';
+import * as _ from 'underscore';
 import { Strategy as GitHubStrategy } from 'passport-github';
 
 passport.serializeUser(function(user,done) {

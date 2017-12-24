@@ -1,5 +1,5 @@
-import $ from 'jquery'
-import _ from 'underscore'
+import * as $ from 'jquery'
+import * as _ from 'underscore'
 import pullManager from './pullManager'
 import PullFilter from './PullFilter'
 import ElementFilter from './ElementFilter'
@@ -10,7 +10,9 @@ import PageIndicatorHandler from 'pageIndicatorHandler'
 
 /* eslint-disable no-unused-vars */
 import 'ConnectionManager'
-import bootstrap from 'bootstrap'
+
+(<any>window).jQuery = $;
+import 'bootstrap'
 /* eslint-enable no-unused-vars */
 
 declare var App: any;

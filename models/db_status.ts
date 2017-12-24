@@ -1,4 +1,4 @@
-import _ from 'underscore';
+import * as _ from 'underscore';
 import db from '../lib/db';
 
 // Builds an object representation of a row in the DB `commit_statuses`

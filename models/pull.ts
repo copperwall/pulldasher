@@ -1,8 +1,8 @@
 import utils from '../lib/utils';
-import _ from 'underscore';
+import * as _ from 'underscore';
 import config from '../config';
 import queue from '../lib/pull-queue';
-import Promise from 'promise';
+import * as Promise from 'promise';
 import debugFactory from '../lib/debug';
 const debug = debugFactory('pulldasher:pull');
 import DBPull from './db_pull';
