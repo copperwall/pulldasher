@@ -7,7 +7,7 @@ module.exports = {
    module: {
       rules: [
          {
-            test: /\.js$/,
+            test: /\.ts$/,
             exclude: /node_modules/,
             use: [
                {
@@ -18,7 +18,8 @@ module.exports = {
                      ]
                   }
                },
-               'eslint-loader'
+               'eslint-loader',
+               'ts-loader'
             ]
          },
          {
@@ -28,7 +29,8 @@ module.exports = {
       ]
    },
    resolve: {
-      modules: ['public/js', 'views/current', 'node_modules']
+      modules: ['public/js', 'views/current', 'node_modules'],
+      extensions: [".js", ".json", ".ts"]
    },
    plugins: [
       new webpack.ProvidePlugin({
@@ -37,7 +39,7 @@ module.exports = {
       }),
       new webpack.optimize.UglifyJsPlugin()
    ],
-   entry: './public/js/main.js',
+   entry: './public/js/main.ts',
    output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist')

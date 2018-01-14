@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var mysql = require('mysql'),
-    config = require('../config'),
+    config = require('../dist-server/config').default,
     fs = require('fs');
 
 var db = mysql.createConnection({
