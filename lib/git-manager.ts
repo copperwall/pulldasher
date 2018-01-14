@@ -135,7 +135,7 @@ export default {
       var commitStatus = getCommitStatus(repo, githubPull.head.sha);
       var events = getIssueEvents(repo, githubPull.number);
       // Only so we have the canonical list of labels.
-      var ghIssue = getIssue(repo, githubPull.number);
+      var ghIssue = this.getIssue(repo, githubPull.number);
 
       // Returned to the map function. Each element of githubPulls maps to
       // a promise that resolves to a Pull.
