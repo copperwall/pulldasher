@@ -30,7 +30,9 @@
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.25.1",
     "husky": "^0.14.3",
+    "jest": "^23.6.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lint-staged": "^7.1.0",
@@ -43,12 +45,14 @@
     "start": "node app.js",
     "debug": "node inspect app.js",
     "postinstall": "webpack",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "jest"
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "git add"
+      "git add",
+      "jest --bail --findRelatedTests"
     ]
   },
   "eslintIgnore": [
