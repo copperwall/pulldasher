@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-require('../lib/debug').default('pulldasher:refresh*');
+require('../dist-server/lib/debug').default('pulldasher:refresh*');
 
-var refresh = require('../lib/refresh');
-var db = require('../lib/db');
+var refresh = require('../dist-server/lib/refresh').default;
+var db = require('../dist-server/lib/db').default;
 
 refresh.openIssues()
-.done(function() {
+.then(function() {
    db.end();
 });

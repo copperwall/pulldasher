@@ -23,6 +23,8 @@
     "underscore": "^1.9.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.6",
+    "@types/node": "^8.0.57",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
@@ -31,6 +33,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jest": "^21.25.1",
+    "fork-ts-checker-webpack-plugin": "^1.0.1",
     "husky": "^0.14.3",
     "jest": "^24.5.0",
     "less": "^3.8.1",
@@ -38,27 +41,32 @@
     "lint-staged": "^8.1.5",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.21.0",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^4.0.0",
+    "typescript": "^3.4.1",
     "webpack": "^4.8.3",
     "webpack-cli": "^3.3.0"
   },
   "scripts": {
-    "start": "node app.js",
-    "debug": "node inspect app.js",
-    "postinstall": "webpack",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "start": "node dist-server/app.js",
+    "debug": "node inspect dist-server/app.js",
+    "postinstall": "npm run build"
   },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "eslint --fix",
       "git add",
       "jest --bail --findRelatedTests"
     ]
   },
   "eslintIgnore": [
-    "dist/bundle.js"
+    "dist/bundle.js",
+    "dist-server"
   ],
-  "main": "app.js",
+  "main": "dist-server/app.js",
   "repository": "git@github.com:ifixit/pulldasher.git",
   "author": "iFixit",
   "license": "MIT"

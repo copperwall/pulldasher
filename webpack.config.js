@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const debug = process.env.DEBUG;
 
@@ -7,7 +8,7 @@ module.exports = {
    module: {
       rules: [
          {
-            test: /\.js$/,
+            test: /\.ts$/,
             exclude: /node_modules/,
             use: [
                {
@@ -18,7 +19,14 @@ module.exports = {
                      ]
                   }
                },
-               'eslint-loader'
+               'eslint-loader',
+               {
+                  loader: 'ts-loader',
+                  options: {
+                     // Transpilation happens in ForkTsCheckerWebpackPlugin.
+                     transpileOnly: true
+                  }
+               }
             ]
          },
          {
@@ -36,16 +44,18 @@ module.exports = {
       ]
    },
    resolve: {
-      modules: ['public/js', 'views/current', 'node_modules']
+      modules: ['public/js', 'views/current', 'node_modules'],
+      extensions: [".js", ".json", ".ts"]
    },
    plugins: [
       new webpack.ProvidePlugin({
         $: "jquery",
         jQuery: "jquery"
-      })
+      }),
+      new ForkTsCheckerWebpackPlugin()
    ],
    entry: [
-     './public/js/main.js',
+     './public/js/main.ts',
      './views/standard/less/main.less'
    ],
    output: {
