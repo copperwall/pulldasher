@@ -35,7 +35,7 @@
     "eslint-plugin-jest": "^21.25.1",
     "fork-ts-checker-webpack-plugin": "^1.0.1",
     "husky": "^0.14.3",
-    "jest": "^24.1.0",
+    "jest": "^24.5.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lint-staged": "^8.1.5",
@@ -45,18 +45,18 @@
     "ts-loader": "^4.0.0",
     "typescript": "^3.4.1",
     "webpack": "^4.8.3",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.3.0"
   },
   "scripts": {
     "precommit": "lint-staged",
     "test": "jest",
-    "build": "tsc && webpack",
+    "build": "webpack",
     "start": "node dist-server/app.js",
     "debug": "node inspect dist-server/app.js",
     "postinstall": "npm run build"
   },
   "lint-staged": {
-    "*.tsx?": [
+    "*.ts": [
       "eslint --fix",
       "git add",
       "jest --bail --findRelatedTests"
