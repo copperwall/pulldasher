@@ -52,7 +52,7 @@
     "test": "jest",
     "build": "webpack",
     "start": "node dist-server/app.js",
-    "debug": "node inspect dist-server/app.js",
+    "debug": "node --inspect dist-server/app.js",
     "postinstall": "npm run build"
   },
   "lint-staged": {

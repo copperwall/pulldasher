@@ -146,8 +146,6 @@ export default {
       }
    ],
 
-   // Where to store the PID of the pulldasher process when run.
-   pidFile: "/var/run/pulldasher.pid",
    // Setting this to true prints more debugging information.
    debug: true,
    // The time in ms before an unauthenticated websocket connection times out.

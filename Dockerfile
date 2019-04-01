@@ -9,4 +9,4 @@ RUN npm install --unsafe-perm
 
 
 EXPOSE 8080
-CMD ["bin/pulldasher"]
+CMD ["npm", "start"]

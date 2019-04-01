@@ -12,7 +12,7 @@ echo "Setup done, starting pulldasher..."
 
 # Start pulldasher
 if [ -n "$DEBUG" ]; then
-   node --inspect="0.0.0.0:9229" bin/pulldasher
+   npm run debug
 else
-   node bin/pulldasher
+   npm run start
 fi
