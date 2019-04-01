@@ -1,6 +1,7 @@
 *.sw*
-config.js
+config.ts
 node_modules
 /views/standard/css
 pulldasher.pid
 dist
+dist-server
