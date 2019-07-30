@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 import * as Bluebird from 'bluebird';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:github');
-import utils from './utils';
+import * as utils from './utils';
 import Pull from '../models/pull';
 import Issue from '../models/issue';
 import Comment from '../models/comment';

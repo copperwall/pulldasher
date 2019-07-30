@@ -1,12 +1,4 @@
-const mockRepos = [
-  "iFixit/pulldasher",
-  "krakenjs/kraken-js",
-  "danielj41/monad-buzz"
-];
-jest.mock("../../config", () => ({
-  default: { repos: mockRepos }
-}), { virtual: true });
-import utils from "../utils";
+import * as utils from "../utils";
 
 describe("Utils", () => {
   describe("toUnixTime", () => {
@@ -78,49 +70,12 @@ describe("Utils", () => {
       expect(date.toString()).toBe("Invalid Date");
     });
 
-    it("should return null if str is falsy", () => {
-      expect(utils.fromDateString(false)).toBeNull();
+    it("should return null if str is null", () => {
+      expect(utils.fromDateString(null)).toBeNull();
     });
 
     it("should return null if str is undefined", () => {
       expect(utils.fromDateString(undefined)).toBeNull();
-    });
-  });
-
-  describe("forEachRepo", () => {
-    it("should call the callback with each repo name as the first argument", () => {
-      const fn = jest.fn();
-      utils.forEachRepo(fn);
-
-      expect(fn).toBeCalledTimes(mockRepos.length);
-      expect(fn).toBeCalledWith("iFixit/pulldasher");
-      expect(fn).toBeCalledWith("krakenjs/kraken-js");
-      expect(fn).toBeCalledWith("danielj41/monad-buzz");
-    });
-
-    it("should apply the callback with the args list as the second through nth arguments", () => {
-      const fn = jest.fn();
-
-      utils.forEachRepo(fn, [1, 2, 3]);
-      expect(fn).toBeCalledTimes(mockRepos.length);
-      expect(fn).toBeCalledWith(expect.anything(), 1, 2, 3);
-    });
-
-    it("should return a promise with the result of each function call", async () => {
-      const result = await utils.forEachRepo(repo => repo);
-
-      expect(result).toEqual(mockRepos);
-    });
-
-    it("should return a rejected promise if the callback throws an error", async () => {
-      expect.assertions(1);
-      try {
-        await utils.forEachRepo(() => {
-          throw new Error("Bad ForEach Error");
-        });
-      } catch (e) {
-        expect(e).toEqual(new Error("Bad ForEach Error"));
-      }
     });
   });
 });

@@ -1,14 +1,33 @@
+import config from '../config';
 import gitManager from './git-manager';
 import dbManager from './db-manager';
-import utils from './utils';
 import * as NotifyQueue from 'notify-queue';
 import debugFactory from './debug';
 const debug = debugFactory('pulldasher:refresh');
 import * as Promise from 'bluebird';
+import * as _ from 'underscore';
 
 // Queues for making all refreshes be synchronous, one at a time.
 var issueQueue = new NotifyQueue();
 var pullQueue  = new NotifyQueue();
+
+/**
+* Provide a function that returns an array of values for a given repo.
+* The second argument should be all arguments after the repository, since the
+* repository argument will be dealt with by this function.
+*
+* The function should take a repository name, and return an array of values.
+*/
+function forEachRepo(singleRepoLambda: Function, args: Array<any> = []) {
+   args.unshift(null);
+   var allRepoMap = function(currentRepo) {
+      args[0] = currentRepo;
+      return singleRepoLambda.apply(this, args);
+   };
+   return Promise.all(config.repos.map(allRepoMap)).then(function(repoItems) {
+      return _.flatten(repoItems, /* shallow */ true);
+   });
+}
 
 export default {
    ///////   Issues   /////////
@@ -21,13 +40,13 @@ export default {
 
    allIssues: function refreshOpenIssues() {
       debug("refresh all issues");
-      return utils.forEachRepo(gitManager.getAllIssues)
+      return forEachRepo(gitManager.getAllIssues)
       .then(pushAllOnQueue(issueQueue));
    },
 
    openIssues: function refreshOpenIssues() {
       debug("refresh all open issues");
-      return utils.forEachRepo(gitManager.getOpenIssues)
+      return forEachRepo(gitManager.getOpenIssues)
       .then(pushAllOnQueue(issueQueue));
    },
 
@@ -42,13 +61,13 @@ export default {
 
    allPulls: function refreshOpenPulls() {
       debug("refresh all pull");
-      return utils.forEachRepo(gitManager.getAllPulls)
+      return forEachRepo(gitManager.getAllPulls)
       .then(pushAllOnQueue(pullQueue));
    },
 
    openPulls: function refreshOpenPulls() {
       debug("refresh all open pulls");
-      return utils.forEachRepo(gitManager.getOpenPulls)
+      return forEachRepo(gitManager.getOpenPulls)
       .then(pushAllOnQueue(pullQueue));
    }
 };
@@ -61,7 +80,7 @@ export default {
 function pushOnQueue(queue) {
    return function(githubResponse) {
       queue.push(githubResponse);
-      return new Promise(function(resolve, reject) {
+      return new Promise(function(resolve) {
          queue.push(resolve);
       });
    };

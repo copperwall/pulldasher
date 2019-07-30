@@ -1,4 +1,4 @@
-import utils from '../lib/utils';
+import * as utils from '../lib/utils';
 import db from '../lib/db';
 
 /**

@@ -1,7 +1,7 @@
 import config from '../config';
 import getLogin from '../lib/get-user-login';
 import getUserid from '../lib/get-user-id';
-import utils from '../lib/utils';
+import * as utils from '../lib/utils';
 
 /**
  * A block or signoff in a comment.

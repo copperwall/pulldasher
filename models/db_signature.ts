@@ -1,4 +1,4 @@
-import utils from '../lib/utils';
+import * as utils from '../lib/utils';
 import getLogin from '../lib/get-user-login';
 import getUserid from '../lib/get-user-id';
 import db from '../lib/db';

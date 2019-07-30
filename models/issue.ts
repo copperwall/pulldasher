@@ -1,4 +1,4 @@
-import utils from '../lib/utils';
+import * as utils from '../lib/utils';
 import * as _ from 'underscore';
 import config from '../config';
 import logFactory from '../lib/debug';
