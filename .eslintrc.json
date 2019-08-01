@@ -8,7 +8,8 @@
     "env": {
        "browser": true,
        "node": true,
-       "jest/globals": true
+       "jest/globals": true,
+       "es6": true
     },
     "globals": {
        "App": true

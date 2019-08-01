@@ -1,43 +1,33 @@
 import { EventEmitter } from 'events';
-import * as _ from 'underscore';
 
-function PullQueue() {
-   EventEmitter.call(this);
-   this.dirtyPulls = {};
+interface QueueEntry {
+   repo: string,
+   number: number
 }
 
-require('util').inherits(PullQueue, EventEmitter);
+export class PullQueue extends EventEmitter {
+   private queuePaused: boolean = false;
+   // TODO: Make Record<string, Pull> type
+   private dirtyPulls: Set<QueueEntry> = new Set<QueueEntry>();
 
-_.extend(PullQueue.prototype, {
-   /**
-    * Adds the pull number to the queue if it is paused; otherwise, updates
-    * the view.
-    */
-   markPullAsDirty: function(repo, number) {
-      var pullId = {repo: repo, number: number};
+   markPullAsDirty(repo: string, number: number): void {
+      const pullId = { repo, number };
       if (this.queuePaused) {
-         this.dirtyPulls[repo + "#" + number] = pullId;
+         this.dirtyPulls.add(pullId);
       } else {
          this.emit('pullsChanged', [pullId]);
       }
-   },
+   }
 
-   /**
-    * Pause all event emitting and combine many pullChanged events into one.
-    */
-   pause: function() {
+   pause(): void {
       this.queuePaused = true;
-   },
+   }
 
-   /**
-    * Resumes event broadcasting and emits collected events.
-    */
-   resume: function() {
-      this.emit('pullsChanged', _.values(this.dirtyPulls));
-      this.dirtyPulls = {};
+   resume(): void {
+      this.emit('pullsChanged', [...this.dirtyPulls]);
+      this.dirtyPulls.clear();
       this.queuePaused = false;
    }
-});
+}
 
 export default new PullQueue();
-
