@@ -2,7 +2,8 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "dist-server",
-    "lib": ["es2015"]
+    "lib": ["es2018"],
+    "downlevelIteration": true
   },
   "include": [
     "models/**/*.ts",

@@ -11,10 +11,11 @@ import Label from '../models/label';
 import refresh from '../lib/refresh';
 import getLogin from '../lib/get-user-login';
 import dbManager from '../lib/db-manager';
+import { Request, Response } from 'express';
 
 var HooksController = {
 
-   main: function(req, res) {
+   main: function(req: Request, res: Response) {
       // Variable for promise that will resolve when the hook is known to have
       // succeeded or failed.
       var dbUpdated;
@@ -198,7 +199,7 @@ function handleLabelEvents(body) {
  * After a label has been added or removed we have to re-process all the labels
  * in case one of them matches one of our configured label updaters.
  */
-function reprocessLabels(repo, issueNumber) {
+function reprocessLabels(repo, issueNumber): Promise {
    if (!config.labels || !config.labels.length) {
       return;
    }

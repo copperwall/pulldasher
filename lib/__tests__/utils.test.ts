@@ -20,7 +20,7 @@ describe("Utils", () => {
         }
       };
 
-      expect(utils.toUnixTime(dateLike)).toBe(dateLike);
+      expect(utils.toUnixTime((dateLike as Date))).toBe(dateLike);
     });
 
     it("should return the date argument if it is a timestamp", () => {

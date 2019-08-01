@@ -2,7 +2,7 @@
  * Converts `t` to a Unix timestamp from a Date object unless it's already
  * a number.
  */
-function toUnixTime(date) {
+function toUnixTime(date: Date | number): number {
   return date instanceof Date ? date.getTime() / 1000 : date;
 }
 
@@ -10,7 +10,7 @@ function toUnixTime(date) {
  * Converts `t` to a Date object from a Unix timestamp unless it's not a
  * number.
  */
-function fromUnixTime(t: number | Date) {
+function fromUnixTime(t: number | Date): Date {
   return typeof t === "number" ? new Date(t * 1000) : t;
 }
 

@@ -12,10 +12,10 @@ var chokePoint = 2000;
 // Wraps a promise returing function in a function that checks responses for
 // github's rate-limit headers and delays firing of requests to attempt to
 // stay under the rate limit.
-export default function rateLimit(promiseFunc) {
+export default function rateLimit<T>(promiseFunc: (...args: Array<any>) => Promise<T>): Promise<T> {
    return function (...args) {
       return throttleRequest().then(function() {
-         return promiseFunc.apply(null, args);
+         return promiseFunc(...args);
       }).then(captureRateLimitInfo);
    };
 }
@@ -31,9 +31,9 @@ var resetAt;
  * Return a promise that resolves immediately (if we don't need to slow down)
  * or resolves later with a delay if we need to stay under the rate limit.
  */
-function throttleRequest() {
+function throttleRequest(): Promise<void> {
    if (remaining !== null && remaining < chokePoint) {
-      return new Promise(function (resolve, reject) {
+      return new Promise(function (resolve) {
          queue(resolve);
       });
    }

@@ -6,14 +6,23 @@ const github = gitManager.github;
 import * as passport from 'passport';
 import * as _ from 'underscore';
 import { Strategy as GitHubStrategy } from 'passport-github';
+import { Application, Request, Response, NextFunction } from 'express';
 
-passport.serializeUser(function(user,done) {
+passport.serializeUser(function(user, done) {
    done(null, user);
 });
 
 passport.deserializeUser(function(obj ,done) {
    done(null, obj);
 });
+
+type AuthenticatedRequest = Request & {
+   logIn: Function,
+   isAuthenticated: () => boolean,
+   session: {
+      auth_redirect: string
+   }
+}
 
 passport.use(new GitHubStrategy({
       clientID: config.github.clientId,
@@ -31,9 +40,9 @@ passport.use(new GitHubStrategy({
 
 export default {
    passport: passport,
-   setupRoutes: function(app) {
+   setupRoutes: function(app: Application) {
       app.get('/auth/github', passport.authenticate('github'));
-      app.get('/auth/github/callback', function(req, res, next) {
+      app.get('/auth/github/callback', function(req: AuthenticatedRequest, res: Response, next: NextFunction) {
          passport.authenticate('github',
          function(err, user, info) {
             if (err) {
@@ -64,7 +73,7 @@ export default {
       });
 
       // Ensure index is authenticated.
-      app.get('/', function (req, res, next) {
+      app.get('/', function (req: AuthenticatedRequest, res: Response, next: NextFunction) {
          if (req.isAuthenticated()) { return next(); }
 
          // Store original URL for post-auth redirect

@@ -128,7 +128,7 @@ var dbManager = {
     * Insert a comment into the database, or update the row if
     * it already exists.
     */
-   updateComment: function(comment) {
+   updateComment: function(comment): void {
       debug('Calling `updateComment` for comment %s in repo %s',
        comment.data.comment_id, comment.data.repo);
       var dbComment = new DBComment(comment);
@@ -180,7 +180,7 @@ var dbManager = {
     * Insert an array of signatures into the database (one at a time, in order)
     * and update the view upon completion.
     */
-   insertSignatures: function(signatures) {
+   insertSignatures: function(signatures): Promise<void> {
       if (!signatures.length) {
          return Promise.resolve();
       }
@@ -230,7 +230,7 @@ var dbManager = {
     * @param number - pull number
     * @param types - array of types to invalidate
     */
-   invalidateSignatures: function(repo, number, types) {
+   invalidateSignatures: function(repo, number, types): Promise<void> {
       debug('Calling invalidateSignatures for pull #%s in repo %s', number,
          repo);
       var q_update = '\
@@ -455,8 +455,8 @@ export default dbManager;
 /**
  * Return a copy of the specified array with nulls removed
  */
-function filterNulls(array) {
-   return array.filter(function(element) {
+function filterNulls<K>(array: Array<K>): Array<K> {
+   return array.filter(function(element: K): K {
       return element;
    });
 }
